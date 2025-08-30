@@ -1,0 +1,41 @@
+SnackBar(content: Text("Delivery Request Sent ✅")),
+      );
+      Navigator.pop(context);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Please fill pickup and delivery details")),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Request Delivery")),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _pickupController,
+              decoration: InputDecoration(labelText: "Pickup Location"),
+            ),
+            TextField(
+              controller: _deliveryController,
+              decoration: InputDecoration(labelText: "Delivery Location"),
+            ),
+            TextField(
+              controller: _notesController,
+              decoration: InputDecoration(labelText: "Notes (e.g. Post Office, ID needed)"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _submitRequest,
+              child: Text("Submit Request"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
